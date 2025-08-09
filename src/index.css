@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: black;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* Add consistent responsive breakpoints */
+@media (max-width: 640px) {
+  .skill-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+}
+  
+  
