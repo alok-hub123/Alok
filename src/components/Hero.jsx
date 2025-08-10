@@ -10,10 +10,21 @@ function Hero() {
 
   return (
     <div className='min-h-screen relative flex flex-col justify-center items-center bg-gradient-to-b from-black to-zinc-900 text-white overflow-hidden'>
-      {/* Animated background elements */}
+      {/* Animated background elements with improved responsiveness */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -top-32 -left-32 animate-pulse" />
-        <div className="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-3xl -bottom-32 -right-32 animate-pulse delay-1000" />
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-500/10 rounded-full blur-3xl -top-32 -left-32 animate-pulse"
+        />
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+          className="absolute w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-500/10 rounded-full blur-3xl -bottom-32 -right-32 animate-pulse delay-1000"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
       </div>
 
       {/* Grid pattern overlay */}
@@ -41,7 +52,7 @@ function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <h2 className='text-2xl md:text-3xl text-gray-300 font-light'>
-                I'm <span className="font-semibold text-white">Alok Chaudhary</span>, a Full Stack Developer
+                I'm <span className="font-semibold text-white">Alok Chaudhary</span>, a Frontend Developer
               </h2>
             </motion.div>
           </motion.div>

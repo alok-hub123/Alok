@@ -9,36 +9,13 @@ import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
-import ThemeToggle from '../components/ThemeToggle';
-// Comment out GSAP imports until you install the core package
-// import { useGSAP } from '@gsap/react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// Remove ThemeToggle import
 
 function Home() {
-  // Comment out GSAP animations for now
-  // useEffect(() => {
-  //   // Register ScrollTrigger plugin
-  //   gsap.registerPlugin(ScrollTrigger);
-  //   
-  //   // Initialize GSAP animations
-  //   gsap.from('section', {
-  //     opacity: 0,
-  //     y: 50,
-  //     stagger: 0.3,
-  //     duration: 1,
-  //     ease: 'power3.out',
-  //     scrollTrigger: {
-  //       trigger: 'section',
-  //       start: 'top 80%',
-  //     },
-  //   });
-  // }, []);
-
   return (
     <div className="relative">
       <Navbar />
-      <ThemeToggle />
+      {/* Remove ThemeToggle component from here */}
       <Hero />
       <About />
       <Education />

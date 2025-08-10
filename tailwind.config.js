@@ -4,7 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class', // Enable dark mode with class strategy
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -27,6 +27,24 @@ export default {
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
+        'shimmer': 'shimmer 2s linear infinite',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' }
+        }
+      },
+      backgroundColor: {
+        'light': '#ffffff',
+        'dark': '#121212',
+      },
+      textColor: {
+        'light': '#121212',
+        'dark': '#ffffff',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

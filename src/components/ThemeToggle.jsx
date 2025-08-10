@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 
 const ThemeToggle = () => {
-  const [darkMode, setDarkMode] = useState(true); // Default to dark mode since your site has a dark theme
-
-  useEffect(() => {
-    // On component mount, check if user has a preference stored
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
-  }, []);
-
-  useEffect(() => {
-    // Update the document class when darkMode changes
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-  };
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
-      className="fixed top-24 right-4 z-20 p-2 rounded-full bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 shadow-lg"
-      aria-label="Toggle theme"
+      className={`p-2 rounded-full shadow-lg backdrop-blur-sm
+        ${isDark 
+          ? 'bg-white/10 hover:bg-white/20 text-yellow-400' 
+          : 'bg-gray-800/10 hover:bg-gray-800/20 text-blue-600'
+        } 
+        transition-all duration-300`}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
     >
-      {darkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
-    </button>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={theme}
+          initial={{ y: -20, opacity: 0, rotate: -180 }}
+          animate={{ y: 0, opacity: 1, rotate: 0 }}
+          exit={{ y: 20, opacity: 0, rotate: 180 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isDark ? (
+            <FaSun className="text-xl" />
+          ) : (
+            <FaMoon className="text-xl" />
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </motion.button>
   );
 };
 

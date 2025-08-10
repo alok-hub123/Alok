@@ -4,21 +4,27 @@ import { FaCode, FaLaptopCode, FaMobileAlt, FaServer } from 'react-icons/fa';
 
 function About() {
   const skills = [
-    { icon: FaCode, label: 'Web Development' },
-    { icon: FaLaptopCode, label: 'App Design' },
-    { icon: FaMobileAlt, label: 'Responsive Design' },
-    { icon: FaServer, label: 'Backend Development' },
+    { icon: FaCode, label: 'Building dynamic, scalable front-end applications' },
+    { icon: FaLaptopCode, label: 'Crafting pixel-perfect UI designs' },
+    { icon: FaMobileAlt, label: 'Ensuring responsive and accessible layouts' },
+    { icon: FaServer, label: 'Collaborating effectively with cross-functional teams' }
   ];
 
   return (
     <section id='about' className="relative min-h-screen py-20 bg-gradient-to-b from-zinc-900 to-black text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-[url('BgBlack.jpg')] bg-cover bg-center opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black" />
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 bg-[url('BgBlack.jpg')] bg-cover bg-center opacity-20 transition-opacity duration-500 hover:opacity-25" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"
+      />
+      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
       <div className="relative container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         {/* Text Content */}
-        <motion.div 
+        <motion.div
           className="flex-1 space-y-8"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -26,7 +32,7 @@ function About() {
           transition={{ duration: 0.8 }}
         >
           <div className="space-y-4">
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,23 +50,36 @@ function About() {
             />
           </div>
 
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl text-gray-300 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            I am a third-year Computer Science (TYCS) student with a passion for creating innovative digital solutions. My journey in technology is driven by a desire to solve real-world problems through elegant code and intuitive design.
+            I am a  passionate Front-End Developer with a strong focus on creating intuitive, responsive, and visually engaging web experiences. My expertise lies in modern technologies such as React.js, Next.js, HTML, CSS, Tailwind CSS, and Bootstrap, along with hands-on experience in React Native for mobile app development.
+            I enjoy turning ideas into clean, functional, and user-friendly interfaces, ensuring that every project I work on delivers both great design and seamless usability. Constantly exploring new tools and techniques, I strive to stay ahead in the ever-evolving web development landscape.
           </motion.p>
 
-          <motion.div 
+          <motion.h3
+              className=" font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text text-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Specialties:
+            </motion.h3>
+
+          <motion.div
             className="grid grid-cols-2 gap-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
+
+            
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.label}
@@ -81,7 +100,7 @@ function About() {
         </motion.div>
 
         {/* Image */}
-        <motion.div 
+        <motion.div
           className="lg:flex-1 w-full max-w-md"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -89,7 +108,7 @@ function About() {
           transition={{ duration: 0.8 }}
         >
           <div className="relative">
-            <motion.div 
+            <motion.div
               className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-2xl opacity-30"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.3 }}
@@ -101,10 +120,10 @@ function About() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <img 
-                src="alok.jpg" 
-                alt="Alok Chaudhary" 
-                className="w-full object-cover transition-transform duration-300 hover:scale-105" 
+              <img
+                src="alok.png"
+                alt="Alok Chaudhary"
+                className="w-full object-cover transition-transform duration-300 hover:scale-105"
               />
             </motion.div>
           </div>

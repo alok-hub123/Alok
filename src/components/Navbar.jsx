@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
 import '../index.css';
+import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -52,11 +53,11 @@ function Navbar() {
         >
             <div className='container mx-auto px-4'>
                 <div className='flex items-center justify-between h-20'>
-                    {/* Logo */}
+                    {/* Logo - Left */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className='relative group'
+                        className='relative group flex-shrink-0'
                     >
                         <div className='absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur opacity-0 group-hover:opacity-20 transition duration-500'></div>
                         <h1 className='dancing-script text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent relative'>
@@ -64,8 +65,8 @@ function Navbar() {
                         </h1>
                     </motion.div>
 
-                    {/* Desktop Menu */}
-                    <div className='hidden md:flex items-center space-x-2'>
+                    {/* Desktop Menu - Center */}
+                    <div className='hidden md:flex items-center justify-center flex-grow mx-4'>
                         <motion.div 
                             className='bg-zinc-900/50 backdrop-blur-sm p-1.5 rounded-full border border-zinc-800/50 flex items-center'
                             initial={{ opacity: 0 }}
@@ -92,28 +93,21 @@ function Navbar() {
                                 </motion.a>
                             ))}
                         </motion.div>
-
-                        <motion.button
-                            className='ml-4 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full text-white font-medium overflow-hidden relative group'
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.5 }}
-                        >
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" />
-                            <span className="relative">HIRE ME</span>
-                        </motion.button>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <motion.button
-                        className='md:hidden p-2 rounded-lg bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50'
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-                    </motion.button>
+                    {/* Right Side - Theme Toggle and Mobile Menu */}
+                    <div className='flex items-center gap-2'>
+                        <div className='hidden md:block'>
+                            <ThemeToggle />
+                        </div>
+                        <motion.button
+                            className='md:hidden p-2 rounded-lg bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50'
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                        </motion.button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
@@ -138,12 +132,9 @@ function Navbar() {
                                         {item.label}
                                     </motion.a>
                                 ))}
-                                <motion.button
-                                    className='w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg text-white font-medium mt-4'
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    HIRE ME
-                                </motion.button>
+                                <div className='pt-2 px-4'>
+                                    <ThemeToggle />
+                                </div>
                             </div>
                         </motion.div>
                     )}
